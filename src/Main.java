@@ -54,16 +54,34 @@ public class Main {
         // to the Candidate class constructor.
         // The candidate object stores all the candidate's information.
 
-        String[] requiredSkills = { "Java", "SQL" };
+        int jobCount = scanner.nextInt();
+        Job[] jobs = new Job[jobCount];
 
-        Job job = new Job(
-            "Infosys",
-            "Java Developer",
-            65.0,
-            0,
-            2026,
-            requiredSkills
-        );
+        for (int i = 0; i < jobCount; i++) {
+            String company = scanner.next();
+            String role = scanner.next();
+            double minimumPercentage = scanner.nextDouble();
+            int maximumBacklogs = scanner.nextInt();
+            int requiredGraduationYear = scanner.nextInt();
+
+            int requiredSkillCount = scanner.nextInt();
+            String[] requiredSkills = new String[requiredSkillCount];
+
+            for (int j = 0; j < requiredSkillCount; j++) {
+                requiredSkills[j] = scanner.next();
+            }
+
+            jobs[i] = new Job(
+                company,
+                role,
+                minimumPercentage,
+                maximumBacklogs,
+                requiredGraduationYear,
+                requiredSkills
+            );
+        }
+
+        Job selectedJob = jobs[0];
         // Creates an object of the Job class.
         // Passes the job-related information to its constructor.
         // "Infosys"       -> Company name.
@@ -94,23 +112,24 @@ public class Main {
         // Retrieves the candidate's name and displays it.
         // The + operator joins the text and candidate's name.
 
-        System.out.println("Company   : " + job.getCompany());
+        System.out.println("Company   : " + selectedJob.getCompany());
         // Calls the getCompany() method of the Job object.
         // Retrieves and displays the company name.
 
-        System.out.println("Role      : " + job.getRole());
+        System.out.println("Role      : " + selectedJob.getRole());
         // Calls the getRole() method of the Job object.
         // Retrieves and displays the job role.
 
         System.out.println();
         // Prints an empty line for better output formatting.
 
-        boolean eligible = checker.evaluate(candidate, job);
+        boolean eligible = checker.evaluate(candidate, selectedJob);
         // Calls the evaluate() method of EligibilityChecker.
         // Passes the candidate object and job object as arguments.
         // The method checks whether the candidate meets the job requirements.
         // Stores the returned true or false value in the boolean variable 'eligible'.
         // true means eligible, false means not eligible.
+
 
         System.out.println();
         // Prints an empty line before displaying the final result.
