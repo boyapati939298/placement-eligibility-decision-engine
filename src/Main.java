@@ -35,23 +35,34 @@ public class Main {
         // Reads an integer representing the graduation year.
         // Stores it in the variable 'graduationYear'.
 
+        int skillCount = scanner.nextInt();
+        String[] skills = new String[skillCount];
+
+        for (int i = 0; i < skillCount; i++) {
+            skills[i] = scanner.next();
+        }
+
         Candidate candidate = new Candidate(
             name,
             percentage,
             backlogs,
-            graduationYear
+            graduationYear,
+            skills
         );
         // Creates an object of the Candidate class.
         // Passes the user's name, percentage, backlogs and graduation year
         // to the Candidate class constructor.
         // The candidate object stores all the candidate's information.
 
+        String[] requiredSkills = { "Java", "SQL" };
+
         Job job = new Job(
             "Infosys",
             "Java Developer",
             65.0,
             0,
-            2026
+            2026,
+            requiredSkills
         );
         // Creates an object of the Job class.
         // Passes the job-related information to its constructor.

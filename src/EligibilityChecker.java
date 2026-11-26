@@ -16,8 +16,10 @@ public class EligibilityChecker {
             new BacklogRule(),
             // Creates an object of BacklogRule to check the candidate's backlogs.
 
-            new GraduationYearRule()
+            new GraduationYearRule(),
             // Creates an object of GraduationYearRule to check the candidate's graduation year.
+
+            new SkillRule()
         };
         // Closes the eligibility rules array initialization.
     }

@@ -25,11 +25,15 @@ public class Candidate {
     // Stores the year in which the candidate graduates.
     // Example: 2026.
 
+    private String[] skills;
+
+
     public Candidate(
         String name,
         double percentage,
         int backlogs,
-        int graduationYear
+        int graduationYear,
+        String[] skills
     ) {
         // This is the constructor of the Candidate class.
         // A constructor is automatically called when a Candidate object is created.
@@ -53,6 +57,8 @@ public class Candidate {
         this.graduationYear = graduationYear;
         // Assigns the graduation year received from the constructor
         // to the instance variable graduationYear.
+
+        this.skills = skills;
     }
     // Closing brace of the Candidate constructor.
 
@@ -95,6 +101,16 @@ public class Candidate {
         // Returns the candidate's graduation year.
     }
     // Closing brace of getGraduationYear() method.
+
+     public boolean hasSkill(String requiredSkill) {
+        for (int i = 0; i < skills.length; i++) {
+            if (skills[i].equalsIgnoreCase(requiredSkill)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 }
 // Closing brace of the Candidate class.

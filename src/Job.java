@@ -31,12 +31,16 @@ public class Job {
     // Stores the graduation year required by the company.
     // Example: 2026 means the candidate must graduate in 2026.
 
+    private String[] requiredSkills;
+
+
     public Job(
         String company,
         String role,
         double minimumPercentage,
         int maximumBacklogs,
-        int requiredGraduationYear
+        int requiredGraduationYear,
+        String[] requiredSkills
     ) {
         // This is the constructor of the Job class.
         // A constructor is automatically called when a Job object is created.
@@ -64,6 +68,8 @@ public class Job {
         this.requiredGraduationYear = requiredGraduationYear;
         // Assigns the required graduation year
         // passed to the constructor to the instance variable.
+
+        this.requiredSkills = requiredSkills;
     }
     // Closing brace of the Job constructor.
 
@@ -112,6 +118,10 @@ public class Job {
         // Returns the required graduation year.
     }
     // Closing brace of getRequiredGraduationYear() method.
+
+    public String[] getRequiredSkills() {
+        return requiredSkills;
+    }
 
 }
 // Closing brace of the Job class.
