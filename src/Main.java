@@ -119,6 +119,13 @@ public class Main {
         }
         // Ends the loop for entering all job details.
 
+        System.out.println();
+        System.out.println("AVAILABLE JOBS");
+
+        for (int i = 0; i < jobs.length; i++) {
+            System.out.println((i + 1) + ". " + jobs[i].getCompany() + " - " + jobs[i].getRole());
+        }
+
         Job selectedJob = jobs[0];
         // Selects the first job from the jobs array for eligibility checking.
 
