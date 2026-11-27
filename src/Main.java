@@ -120,14 +120,20 @@ public class Main {
         // Ends the loop for entering all job details.
 
         System.out.println();
+        // prints a blank line before "AVAILABLE JOBS"
         System.out.println("AVAILABLE JOBS");
+        // Loop through the jobs array and print each job
 
         for (int i = 0; i < jobs.length; i++) {
+            // prints the available jobs in the format of 1. Company - Role
             System.out.println((i + 1) + ". " + jobs[i].getCompany() + " - " + jobs[i].getRole());
         }
 
-        Job selectedJob = jobs[0];
-        // Selects the first job from the jobs array for eligibility checking.
+        // Take the selected job from the User Input
+        int selectedJobNumber = scanner.nextInt();
+        // Adjust the index to match the array index (0-based)
+        Job selectedJob = jobs[selectedJobNumber - 1];
+        // creates an object of Job class and stores the selected job in it.
 
         EligibilityChecker checker = new EligibilityChecker();
         // Creates an EligibilityChecker object to evaluate candidate eligibility.
