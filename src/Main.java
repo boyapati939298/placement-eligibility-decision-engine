@@ -1,99 +1,129 @@
-
 import java.util.Scanner;
-// Imports the Scanner class from Java's utility package.
-// Scanner is used to take input from the user through the keyboard.
+// Imports the Scanner class from Java's utility package to read user input.
 
 public class Main {
     // Declares a public class named Main.
-    // In Java, every program must have at least one class.
 
     public static void main(String[] args) {
-        // This is the main method.
-        // Program execution starts from this method.
-        // public: Accessible from anywhere.
-        // static: Can be executed without creating an object of Main.
-        // void: Does not return any value.
-        // String[] args: Accepts command-line arguments.
+        // Main method where the execution of the Java program begins.
 
         Scanner scanner = new Scanner(System.in);
-        // Creates a Scanner object named scanner.
-        // System.in tells Scanner to read input from the keyboard.
+        // Creates a Scanner object to accept input from the keyboard.
 
         String name = scanner.next();
-        // Reads a single word entered by the user.
-        // Stores the entered name in the String variable 'name'.
+        // Reads the candidate's name as a single word.
 
         double percentage = scanner.nextDouble();
-        // Reads a decimal number entered by the user.
-        // Stores the percentage in the double variable 'percentage'.
+        // Reads the candidate's academic percentage as a decimal value.
 
         int backlogs = scanner.nextInt();
-        // Reads an integer entered by the user.
-        // Stores the number of backlogs in the variable 'backlogs'.
+        // Reads the number of backlogs as an integer.
 
         int graduationYear = scanner.nextInt();
-        // Reads an integer representing the graduation year.
-        // Stores it in the variable 'graduationYear'.
+        // Reads the candidate's graduation year.
 
         int skillCount = scanner.nextInt();
+        // Reads the total number of skills possessed by the candidate.
+
         String[] skills = new String[skillCount];
+        // Creates a String array to store the candidate's skills.
 
         for (int i = 0; i < skillCount; i++) {
+            // Loops through the array to accept each candidate skill.
+
             skills[i] = scanner.next();
+            // Reads a skill entered by the user and stores it at the current index.
         }
+        // Ends the loop for entering candidate skills.
 
         Candidate candidate = new Candidate(
-            name,
-            percentage,
-            backlogs,
-            graduationYear,
-            skills
+                // Creates a Candidate object using the constructor.
+
+                name,
+                // Passes the candidate's name to the constructor.
+
+                percentage,
+                // Passes the candidate's academic percentage.
+
+                backlogs,
+                // Passes the candidate's number of backlogs.
+
+                graduationYear,
+                // Passes the candidate's graduation year.
+
+                skills
+        // Passes the candidate's skills array.
         );
-        // Creates an object of the Candidate class.
-        // Passes the user's name, percentage, backlogs and graduation year
-        // to the Candidate class constructor.
-        // The candidate object stores all the candidate's information.
+        // Completes the creation of the Candidate object.
 
         int jobCount = scanner.nextInt();
+        // Reads the total number of jobs entered by the user.
+
         Job[] jobs = new Job[jobCount];
+        // Creates an array of Job objects to store multiple job details.
 
         for (int i = 0; i < jobCount; i++) {
+            // Loops through the array to collect details of each job.
+
             String company = scanner.next();
+            // Reads the company name.
+
             String role = scanner.next();
+            // Reads the job role.
+
             double minimumPercentage = scanner.nextDouble();
+            // Reads the minimum academic percentage required for the job.
+
             int maximumBacklogs = scanner.nextInt();
+            // Reads the maximum number of backlogs allowed.
+
             int requiredGraduationYear = scanner.nextInt();
+            // Reads the required graduation year for the job.
 
             int requiredSkillCount = scanner.nextInt();
+            // Reads the total number of skills required for the job.
+
             String[] requiredSkills = new String[requiredSkillCount];
+            // Creates an array to store all the required job skills.
 
             for (int j = 0; j < requiredSkillCount; j++) {
+                // Loops through the array to accept each required skill.
+
                 requiredSkills[j] = scanner.next();
+                // Reads a required skill and stores it in the array.
             }
+            // Ends the loop for entering required skills.
 
             jobs[i] = new Job(
-                company,
-                role,
-                minimumPercentage,
-                maximumBacklogs,
-                requiredGraduationYear,
-                requiredSkills
+                    // Creates a Job object and stores it at the current array index.
+
+                    company,
+                    // Passes the company name to the Job constructor.
+
+                    role,
+                    // Passes the job role.
+
+                    minimumPercentage,
+                    // Passes the minimum required academic percentage.
+
+                    maximumBacklogs,
+                    // Passes the maximum allowed backlogs.
+
+                    requiredGraduationYear,
+                    // Passes the required graduation year.
+
+                    requiredSkills
+            // Passes the array containing the required skills.
             );
+            // Completes the creation of the Job object.
         }
+        // Ends the loop for entering all job details.
 
         Job selectedJob = jobs[0];
-        // Creates an object of the Job class.
-        // Passes the job-related information to its constructor.
-        // "Infosys"       -> Company name.
-        // "Java Developer" -> Job role.
-        // 65.0            -> Minimum required percentage.
-        // 0               -> Maximum allowed backlogs.
-        // 2026            -> Required graduation year.
+        // Selects the first job from the jobs array for eligibility checking.
 
         EligibilityChecker checker = new EligibilityChecker();
-        // Creates an object of the EligibilityChecker class.
-        // This object is responsible for checking whether
-        // the candidate satisfies the job eligibility criteria.
+        // Creates an EligibilityChecker object to evaluate candidate eligibility.
 
         System.out.println("================================");
         // Prints a decorative separator line.
@@ -105,58 +135,49 @@ public class Main {
         // Prints another decorative separator line.
 
         System.out.println();
-        // Prints an empty line to create spacing in the output.
+        // Prints an empty line to improve output formatting.
 
         System.out.println("Candidate : " + candidate.getName());
-        // Calls the getName() method of the Candidate object.
-        // Retrieves the candidate's name and displays it.
-        // The + operator joins the text and candidate's name.
+        // Retrieves and displays the candidate's name using the getName() method.
 
         System.out.println("Company   : " + selectedJob.getCompany());
-        // Calls the getCompany() method of the Job object.
-        // Retrieves and displays the company name.
+        // Retrieves and displays the selected company's name.
 
         System.out.println("Role      : " + selectedJob.getRole());
-        // Calls the getRole() method of the Job object.
-        // Retrieves and displays the job role.
+        // Retrieves and displays the selected job role.
 
         System.out.println();
-        // Prints an empty line for better output formatting.
+        // Prints an empty line for better readability.
 
         boolean eligible = checker.evaluate(candidate, selectedJob);
-        // Calls the evaluate() method of EligibilityChecker.
-        // Passes the candidate object and job object as arguments.
-        // The method checks whether the candidate meets the job requirements.
-        // Stores the returned true or false value in the boolean variable 'eligible'.
-        // true means eligible, false means not eligible.
-
+        // Calls the evaluate() method to check whether the candidate is eligible.
+        // Passes the Candidate and Job objects as arguments.
+        // Stores the returned true or false value in the eligible variable.
 
         System.out.println();
         // Prints an empty line before displaying the final result.
 
         if (eligible) {
-            // Checks whether the eligible variable is true.
-            // If true, the statements inside this if block are executed.
+            // Checks whether the eligible variable contains true.
 
             System.out.println("Final Result : ELIGIBLE");
-            // Displays ELIGIBLE if the candidate satisfies the requirements.
+            // Displays ELIGIBLE if the candidate satisfies all eligibility rules.
 
         } else {
-            // Executes when the eligible variable is false.
-            // This means the candidate does not satisfy the requirements.
+            // Executes this block if the eligible variable contains false.
 
             System.out.println("Final Result : NOT ELIGIBLE");
-            // Displays NOT ELIGIBLE if the candidate does not qualify.
+            // Displays NOT ELIGIBLE if the candidate fails any eligibility rule.
         }
+        // Ends the if-else conditional statement.
 
         System.out.println("================================");
         // Prints the closing separator line.
 
         scanner.close();
-        // Closes the Scanner object.
-        // Releases the input resource after all user input is completed.
+        // Closes the Scanner object and releases the input resource.
     }
-    // Closing brace of the main() method.
+    // Ends the main() method.
 
 }
-// Closing brace of the Main class.
+// Ends the Main class.
